@@ -29,7 +29,7 @@
 		<div class="content post__lastmod clearfix">
 			This page was modified on {{ .Lastmod.Format "January 2, 2006" }}: {{ .GitInfo.Subject }}
 		</div>
-		{{- if (or (.Params.tags) (.Params.sharing)) }}
+		{{- if (or (.Params.tags) (.Site.Params.sharing)) }}
 		<footer class="post__footer">
 			{{- if .Params.tags }}
 				{{ partial "post_tags.html" . }}
