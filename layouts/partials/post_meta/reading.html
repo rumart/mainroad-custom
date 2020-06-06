@@ -1,0 +1,7 @@
+<!-- Filter out list and page, site config? front_matter?? so you can have the date stuff -->
+{{- if ne .Page.Kind "home" }}
+<div class="meta__item-reading meta__item">
+	{{ partial "svg/time.svg" (dict "class" "meta__icon") -}}
+	<span class="meta__text">About {{ .ReadingTime }} mins reading time · {{ .WordCount }} words</span>
+</div>
+{{- end }}

@@ -1,0 +1,48 @@
+{{ define "main" }}
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">{{ .Title }}</h1>
+			{{- with .Params.lead }}
+			<p class="post__lead">{{ . }}</p>
+			{{- end }}
+			{{ if ne .Type "page" -}}
+  			<!-- <div class="post-date">
+    			About {{ .ReadingTime }} min read · {{ .WordCount }} words
+  			</div> -->
+			  {{- end }}
+			  {{ if ne .Type "page" -}}
+			{{ with partial "post_meta.html" . -}}
+			<div class="post__meta meta">{{ . }}</div>
+			{{- end }}
+			{{- end }}
+		</header>
+		{{- if (and (isset .Params "thumbnail") (.Params.thumbail_post) )  }}
+		<figure class="post__thumbnail">
+			<img src="{{ .Params.thumbnail | relURL }}" alt="{{ .Title }}">
+		</figure>
+		{{- end }}
+		{{- partial "post_toc.html" . -}}
+		<div class="content post__content clearfix">
+			{{ replace .Content "\\" "" | safeHTML }}
+		</div>
+		<div class="content post__lastmod clearfix">
+			This page was modified on {{ .Lastmod.Format "January 2, 2006" }}: {{ .GitInfo.Subject }}
+		</div>
+		{{- if (or (.Params.tags) (.Params.sharing)) }}
+		<footer class="post__footer">
+			{{- if .Params.tags }}
+				{{ partial "post_tags.html" . }}
+			{{- end }}
+			{{- if .Site.Params.sharing }}
+				{{ partial "sharing.html" . }}
+			{{- end }}
+		</footer>
+		{{- end }}
+	</article>
+</main>
+{{ partial "authorbox.html" . }}
+{{ partial "pager.html" . }}
+{{ partial "comments.html" . }}
+{{ partial "related.html" . }}
+{{ end }}

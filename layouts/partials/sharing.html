@@ -1,0 +1,22 @@
+{{- if .Site.Params.sharing }}
+    <div class="post__sharing sharing clearfix">
+        {{ partial "svg/share.svg" (dict "class" "share__badge") }}
+        <ul class="share__list">
+            <li class="share__item">
+                <a class="share__link" href="https://www.facebook.com/sharer/sharer.php?u={{.Permalink | absURL }}" onclick="window.open(this.href, 'mywin',
+'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">{{ partial "svg/facebook.svg" (dict "class" "widget-social__share-icon") }}</a>
+            </li>
+            <li class="share__item">
+                <a class="share__link" href="https://twitter.com/intent/tweet?text={{ .Params.title }}&amp;url={{ .Permalink| absURL  }}" onclick="window.open(this.href, 'mywin',
+                'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">{{ partial "svg/twitter.svg" (dict "class" "widget-social__share-icon") }}</a>
+            </li>
+            <li class="share__item">
+                <a class="share__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ .Permalink| absURL  }}&amp;title={{ .Params.title }}" onclick="window.open(this.href, 'mywin',
+                'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">{{ partial "svg/linkedin.svg" (dict "class" "widget-social__share-icon") }}</i></a>
+            </li>
+            <li class="share__item">
+                <a class="share__link" href="mailto:?subject={{ .Params.title }}&amp;body=Check out this site {{ .Permalink| absURL  }}" data-proofer-ignore="">{{ partial "svg/email.svg" (dict "class" "widget-social__share-icon") }}</a>
+            </li>
+        </ul>
+    </div>
+{{- end }}

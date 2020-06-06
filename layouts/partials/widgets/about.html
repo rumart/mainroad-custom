@@ -1,0 +1,13 @@
+<div class="widget-badges widget">
+    <h4 class="widget__title">About the Author</h4>
+	{{- with .Site.Author.avatar }}
+	<figure class="authorbox__avatar">
+		<img alt="{{ $.Site.Author.name }} avatar" src="{{ $.Site.Author.avatar | relURL }}" class="avatar" height="90" width="90">
+	</figure>
+    {{- end }}
+    {{- with .Site.Author.bio }}
+	<div class="authorbox__description">
+		{{ . | markdownify }}
+	</div>
+	{{- end }}
+</div>
