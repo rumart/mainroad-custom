@@ -1,0 +1,8 @@
+static/pics
+pics
+resources/*
+public/*
+
+.DS_Store
+
+config.toml
