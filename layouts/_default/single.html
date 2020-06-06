@@ -2,7 +2,7 @@
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">{{ .Title }}</h1>
+			<h1 class="post__title">{{ if .Draft }}DRAFT :: {{ end }}{{ .Title }}</h1>
 			{{- with .Params.lead }}
 			<p class="post__lead">{{ . }}</p>
 			{{- end }}
@@ -27,7 +27,7 @@
 			{{ replace .Content "\\" "" | safeHTML }}
 		</div>
 		<div class="content post__lastmod clearfix">
-			This page was modified on {{ .Lastmod.Format "January 2, 2006" }}: {{ .GitInfo.Subject }}
+			This page was modified on {{ .Lastmod.Format "January 2, 2006" }}: {{ with .GitInfo }}{{ .Subject }}{{ end }}
 		</div>
 		{{- if and (or (.Params.tags) (.Site.Params.sharing)) (not (eq .Params.sharing false)) }}
 		<footer class="post__footer">

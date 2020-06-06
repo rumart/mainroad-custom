@@ -9,7 +9,7 @@
 	<header class="list__header">
 		<h3 class="list__title post__title ">
 			<a href="{{ .RelPermalink }}" rel="bookmark">
-			{{ .Title }}
+				{{ if .Draft }}DRAFT :: {{ end }}{{ .Title }}
 			</a>
 		</h3>
 		{{- with .Params.lead }}
