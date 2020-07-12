@@ -1,4 +1,5 @@
-{{ $related := .Site.RegularPages.RelatedIndices . | first 5 }}  
+{{- if .Param "related" | default true }}
+ {{ $related := .Site.RegularPages.RelatedIndices . | first 5 }}  
   {{ with $related }}
   <div class="content clearfix">
     <br />
@@ -9,4 +10,5 @@
         {{ end }}
     </ul>
   </div>
-  {{ end }}
+ {{ end }}
+{{ end }}
