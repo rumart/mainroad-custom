@@ -14,26 +14,7 @@
 		{{ template "_internal/schema.html" . }}
 	{{- end }}
 	{{- if .Site.Params.twitter_cards }}
-		<!-- {{ template "_internal/twitter_cards.html" . }} -->
-		{{ if ne .Params.card "" }}
-			<meta name="twitter:card" content="{{ .Params.card }}" />
-    	{{ else }}
-			<meta name="twitter:card" content="summary" />
-		{{ end }}
-		{{ if .Params.image }}
-			<meta name="twitter:image" content="{{ .Params.image }}" />
-    	{{ else if .Params.thumbnail }}
-			<meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.thumbnail }}" />
-		{{ else}}
-			<meta name="twitter:image" content="{{ .Site.BaseURL }}img/site_icon.png" />
-    	{{ end }}
-		<meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
-		<meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
-		<meta name="twitter:title" content="{{ .Title }}" />
-		<meta name="twitter:description" content="{{ .Description }}" />
-		<meta name="twitter:url" content="{{ .Permalink }}" />
-		<meta name="twitter:domain" content="{{ .Site.BaseURL }}">
-		<!-- <meta name="twitter:image" content="{{ .Params.image }}"> -->
+		{{ template "_internal/twitter_cards.html" . }}
 	{{- end }}
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
